@@ -7,10 +7,12 @@ from . import views
 # from django.contrib import admin
 admin.autodiscover()
 
+app_name = 'articles'
 urlpatterns = [
     # url('admin/', admin.site.urls),
     # url(r'about/$', views.about),
-    url(r'^$', views.article_list),
+    url(r'^$', views.article_list, name="list"),
+    url(r'^(?P<slug>[\w-]+)/$', views.article_detail, name="detail"),
 ]
 
 # urlpatterns += staticfiles_urlpatterns()
